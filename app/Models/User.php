@@ -46,5 +46,9 @@ class User extends Authenticatable
 
     public function phone():HasMany{
         return $this->hasMany(Phone::class);
-    }
+   }
+
+   public function fullName(){
+    return $this->name;
+   }
 }

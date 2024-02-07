@@ -6,16 +6,17 @@ use App\HttP\Controllers\UserController;
 
 Route::redirect('/', '/users');
 
-Route::get('/users', [UserController::class, 'index'])->name('user.index');
-Route::get('/users/create', [UserController::class, 'create'])->name('user.create');
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
+Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
 Route::post('/users', [UserController::class, 'store'])->name('users.store');
 
 Route::controller(PhoneController::class)->group(function (){
-    Route::get('phones', 'index');
-    Route::get('phones/create', 'create');
-    Route::post('phones', 'store');
-    Route::get('phones/{phone}/edit','edit');
-    Route::put('phones/{phone}/update','update');
-    Route::delete('phones/delete', 'destroy');
+    Route::get('phones', 'index')->name('phones.index');
+    Route::get('phones/create', 'create')->name('phones.create');
+    Route::post('phones', 'store')->name('phones.store');
+    Route::get('phones/{phone}', 'show')->name('phones.show');
+    Route::get('phones/{phone}/edit','edit')->name('phones.edit');
+    Route::put('phones/{phone}/update','update')->name('phones.update');
+    Route::delete('phones/delete', 'destroy')->name('phones.destroy');
 
 });
